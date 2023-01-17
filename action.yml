@@ -1,0 +1,28 @@
+name: 'Qualys github action xxxxx'
+description: 'Scan the vulnerabilities of docker images'
+inputs:
+  QUALYS_API_SERVER:
+    description: Qualys API Server URL
+    required: true
+  USERNAME:
+    description: Qualys API Username
+    required: true
+  PASSWORD:
+    description: Qualys API Password
+    required: true
+  DOCKER_IMAGE_NAME:
+    description: Image Id/Image Name
+    required: true
+  TIMEOUT:
+    description: Script timeout
+    required: false
+    default: 15
+runs:
+  using: docker
+  image: ../../../Dockerfile
+  args:
+    - ${{ inputs.QUALYS_API_SERVER }}
+    - ${{ inputs.USERNAME }}
+    - ${{ inputs.PASSWORD }}
+    - ${{ inputs.DOCKER_IMAGE_NAME }}
+    - ${{ inputs.TIMEOUT }}
