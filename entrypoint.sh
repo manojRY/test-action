@@ -28,6 +28,7 @@ get_token() {
 
 get_result () {
 	echo "Getting result for ${IMAGE_ID}"
+	echo "token: $TOKEN"
 	CURL_COMMAND=$($CURL -k -s -X GET ${QUALYS_API_SERVER}/csapi/v1.3/images/${SHA} -H 'accept: application/json' -H 'Authorization: Bearer '${TOKEN} -o ${IMAGE_ID}.json -w "%{http_code}")
 	HTTP_CODE=$CURL_COMMAND
 	echo "HTTP Code: ${HTTP_CODE}"
